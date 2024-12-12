@@ -1,0 +1,91 @@
+/* Общий стиль страницы */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f8ff;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+/* Контейнер формы */
+.login-container {
+    width: 350px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Заголовок формы */
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Стили для полей ввода */
+.form-group {
+    margin-bottom: 15px;
+    text-align: center; /* Центрирование содержимого */
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%; /* Поля ввода занимают всю ширину контейнера */
+    max-width: 280px; /* Ограничение максимальной ширины поля */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: #0059b2;
+    box-shadow: 0 0 5px rgba(0, 89, 178, 0.5);
+    outline: none;
+}
+
+/* Стили для кнопки */
+button {
+    width: 100%;
+    max-width: 280px; /* Ограничение максимальной ширины кнопки */
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.form-hint {
+    text-align: center;
+    margin-top: 10px;
+    color: #777;
+    font-size: 14px;
+}
+
+.form-hint a {
+    color: #0059b2;
+    text-decoration: none;
+}
+
+.form-hint a:hover {
+    text-decoration: underline;
+}

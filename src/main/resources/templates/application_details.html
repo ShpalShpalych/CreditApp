@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали заявки</title>
+    <link rel="stylesheet" href="../static/styles/css/application_details.css"> <!-- Подключение CSS -->
+</head>
+<body>
+
+<div class="application-details-container">
+    <h2>Детали заявки</h2>
+
+    <div class="info-group">
+        <span class="info-label">Имя клиента:</span>
+        <span class="info-value" id="client-name">Иванов Иван Иванович</span>
+    </div>
+
+    <div class="info-group">
+        <span class="info-label">Сумма запрашиваемого займа:</span>
+        <span class="info-value" id="loan-amount">500,000 руб.</span>
+    </div>
+
+    <div class="info-group">
+        <span class="info-label">Процентная ставка:</span>
+        <span class="info-value" id="interest-rate">12%</span>
+    </div>
+
+    <div class="info-group">
+        <span class="info-label">Срок займа:</span>
+        <span class="info-value" id="loan-term">24 месяца</span>
+    </div>
+
+    <div class="info-group">
+        <span class="info-label">Риск кредитной сделки:</span>
+        <span class="info-value" id="risk-level">Высокий</span>
+    </div>
+
+    <div class="button-group">
+        <button class="btn-edit hidden" id="edit-button">Редактировать</button>
+        <button class="btn-approve hidden" id="approve-button">Одобрить</button>
+        <button class="btn-reject hidden" id="reject-button">Отклонить</button>
+    </div>
+</div>
+
+<script>
+    // Примерный способ определения типа пользователя
+    // В реальной системе тип пользователя передаётся с сервера или хранится в сессии
+    const userType = 1; // 1 - администратор (может редактировать), 2 - кредитный менеджер (может одобрить/отклонить)
+
+    if (userType === 1) {
+        document.getElementById('edit-button').classList.remove('hidden');
+    } else if (userType === 2) {
+        document.getElementById('approve-button').classList.remove('hidden');
+        document.getElementById('reject-button').classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список клиентов</title>
+    <link rel="stylesheet" href="../static/styles/css/clients.css"> <!-- Подключение CSS -->
+</head>
+<body>
+
+<div class="clients-container">
+    <h2>Список клиентов</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ФИО</th>
+            <th>Дата рождения</th>
+            <th>Активные заявки</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="client : ${clients}" th:onclick="'window.location=\'client-details.html?id=' + ${client.id} + '\'">
+        <td th:text="${client.name}">Иванов Иван Иванович</td>
+        <td th:text="${client.dateOfBirth}">01.01.1990</td>
+        <td th:text="${client.activeApplications}">3</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Кнопка "Добавить" -->
+    <div class="button-container">
+        <button onclick="openModal()">Добавить</button>
+    </div>
+</div>
+
+<!-- Модальное окно для добавления клиента -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Добавить клиента</h2>
+        </div>
+        <form id="clientForm">
+            <label for="fullName">ФИО:</label>
+            <input class="modal-input" type="text" id="fullName" name="fullName" required><br>
+
+            <label for="dob">Дата рождения:</label>
+            <input class="modal-input" type="date" id="dob" name="dob" required><br>
+
+            <label for="passport">Номер паспорта:</label>
+            <input class="modal-input" type="text" id="passport" name="passport" required><br>
+
+            <label for="phone">Номер телефона:</label>
+            <input class="modal-input" type="tel" id="phone" name="phone" required><br>
+
+            <label for="education">Образование:</label>
+            <input class="modal-input" type="text" id="education" name="education" required><br>
+
+            <label for="employment">Работа:</label>
+            <select class="modal-input" id="employment" name="employment" required>
+                <option value="full_time">Полный рабочий день</option>
+                <option value="part_time">Частичный рабочий день</option>
+                <option value="unemployed">Безработный</option>
+            </select><br>
+
+            <label for="income">Средний годовой доход:</label>
+            <input class="modal-input" type="number" id="income" name="income" required><br>
+
+            <div class="modal-footer">
+                <button type="button" onclick="submitForm()">Сохранить</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="../static/js/script.js"></script>
+
+</body>
+</html>

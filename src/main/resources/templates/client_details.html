@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Детали клиента</title>
+    <link rel="stylesheet" href="../static/styles/css/client_details.css">
+</head>
+<body>
+
+<div class="client-details-container">
+    <h2>Детали клиента</h2>
+
+    <div class="info-group">
+        <span class="info-label">ФИО:</span>
+        <span class="info-value" th:text="${client.name}">Иванов Иван Иванович</span>
+    </div>
+
+    <div class="info-group">
+        <span class="info-label">Дата рождения:</span>
+        <span class="info-value" th:text="${client.dateOfBirth}">01.01.1990</span>
+    </div>
+
+    <div class="info-group">
+        <span class="info-label">Номер паспорта:</span>
+        <span class="info-value" th:text="${client.passportNumber}">1234 567890</span>
+    </div>
+
+    <div class="info-group">
+        <span class="info-label">Номер телефона:</span>
+        <span class="info-value" th:text="${client.phoneNumber}">+7 (999) 123-45-67</span>
+    </div>
+
+    <div class="info-group">
+        <span class="info-label">Образование:</span>
+        <span class="info-value" th:text="${client.education}">Высшее</span>
+    </div>
+
+    <div class="info-group">
+        <span class="info-label">Работа:</span>
+        <span class="info-value" th:text="${client.job}">Полный рабочий день</span>
+    </div>
+
+    <div class="info-group">
+        <span class="info-label">Средний годовой доход:</span>
+        <span class="info-value" th:text="${client.averageAnnualIncome}">1,200,000 руб.</span>
+    </div>
+
+    <div class="applications-list">
+        <h3>Активные заявки</h3>
+        <ul>
+            <li th:each="application : ${client.creditApplications}" th:onclick="'redirectToApplication(' + ${application.id} + ')'">
+                Заявка #<span th:text="${application.id}"></span> - <span th:text="${application.status}"></span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="button-container">
+        <button onclick="openEditModal()">Редактировать</button>
+        <button class="delete-button" onclick="deleteClient()">Удалить</button>
+    </div>
+</div>
+
+<!-- Модальное окно для редактирования информации клиента -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Редактировать информацию клиента</h2>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="edit-full-name">ФИО:</label>
+                <input type="text" id="edit-full-name" th:value="${client.name}">
+            </div>
+            <div class="form-group">
+                <label for="edit-birth-date">Дата рождения:</label>
+                <input type="date" id="edit-birth-date" th:value="${client.dateOfBirth}">
+            </div>
+            <div class="form-group">
+                <label for="edit-passport-number">Номер паспорта:</label>
+                <input type="text" id="edit-passport-number" th:value="${client.passportNumber}">
+            </div>
+            <div class="form-group">
+                <label for="edit-phone-number">Номер телефона:</label>
+                <input type="tel" id="edit-phone-number" th:value="${client.phoneNumber}">
+            </div>
+            <div class="form-group">
+                <label for="edit-education">Образование:</label>
+                <input type="text" id="edit-education" th:value="${client.education}">
+            </div>
+            <div class="form-group">
+                <label for="edit-employment">Работа:</label>
+                <input type="text" id="edit-employment" th:value="${client.job}">
+            </div>
+            <div class="form-group">
+                <label for="edit-annual-income">Средний годовой доход:</label>
+                <input type="number" id="edit-annual-income" th:value="${client.averageAnnualIncome}">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button onclick="saveClientChanges()">Сохранить</button>
+            <button onclick="closeEditModal()">Закрыть</button>
+        </div>
+    </div>
+</div>
+
+<script src="../static/js/script.js"></script>
+</body>
+</html>
